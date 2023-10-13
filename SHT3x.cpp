@@ -62,16 +62,16 @@ void SHT3x::UpdateData(int SDA)
 				_Error = Timeout;
 			}
 		}
+
+		else // Error after message send
+		{
+			// Nothing to do, measurement commands will return NULL because of Error != noError
+		}
 	}
-	else // Error after message send
+	else // LastUpdate was too recently
 	{
-		// Nothing to do, measurement commands will return NULL because of Error != noError
+		// Nothing to do, wait for next call
 	}
-}
-else // LastUpdate was too recently
-{
-	// Nothing to do, wait for next call
-}
 }
 
 float SHT3x::GetTemperature(TemperatureScale Degree)
